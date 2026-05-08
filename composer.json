@@ -13,6 +13,9 @@
     "azuyalabs/yasumi": "^2.3"
   },
   "config": {
-    "optimize-autoloader": true
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
   }
 }
