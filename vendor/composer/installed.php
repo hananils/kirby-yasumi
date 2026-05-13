@@ -3,7 +3,7 @@
         'name' => 'hashandsalt/kirby3-yasumi',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '42b65e45f60a6647cbc47aef002447245323976d',
+        'reference' => '24ad966a8a6cba70dd1702cf3cb221074f5fb645',
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -31,7 +31,7 @@
         'hashandsalt/kirby3-yasumi' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '42b65e45f60a6647cbc47aef002447245323976d',
+            'reference' => '24ad966a8a6cba70dd1702cf3cb221074f5fb645',
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
