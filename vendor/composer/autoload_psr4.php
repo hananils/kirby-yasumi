@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'Yasumi\\' => array($vendorDir . '/azuyalabs/yasumi/src/Yasumi'),
     'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src'),
+    'Hashsandsalt\\Yasumi\\' => array($baseDir . '/lib'),
 );

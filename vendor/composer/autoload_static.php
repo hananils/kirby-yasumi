@@ -15,6 +15,10 @@ class ComposerStaticInitd88c4d610df115c3390fa52d43188afc
         array (
             'Kirby\\' => 6,
         ),
+        'H' =>
+        array (
+            'Hashsandsalt\\Yasumi\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -26,10 +30,16 @@ class ComposerStaticInitd88c4d610df115c3390fa52d43188afc
         array (
             0 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
         ),
+        'Hashsandsalt\\Yasumi\\' =>
+        array (
+            0 => __DIR__ . '/../..' . '/lib',
+        ),
     );
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'Hashsandsalt\\Yasumi\\Holiday' => __DIR__ . '/../..' . '/lib/Holiday.php',
+        'Hashsandsalt\\Yasumi\\Holidays' => __DIR__ . '/../..' . '/lib/Holidays.php',
         'Kirby\\ComposerInstaller\\CmsInstaller' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/CmsInstaller.php',
         'Kirby\\ComposerInstaller\\Installer' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Installer.php',
         'Kirby\\ComposerInstaller\\Plugin' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Plugin.php',

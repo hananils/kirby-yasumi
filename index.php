@@ -1,43 +1,48 @@
 <?php
 
+use Hashsandsalt\Yasumi\Holidays;
 use Kirby\Cms\App as Kirby;
-use Kirby\Cms\Pages;
+use Kirby\Toolkit\Str;
 use Yasumi\Yasumi;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 Kirby::plugin('hashsandsalt/yasumi', [
     'siteMethods' => [
-        'holidays' => function (
-            string $country,
-            int $year,
-            string $locale = 'en_US'
+        'yasumi' => function (
+            ?string $country = null,
+            ?int $year = null,
+            ?string $locale = null
         ) {
+            if ($locale === null) {
+                $locale = Locale::getDefault();
+                $locale = Str::before($locale, '.');
+                $locale = Str::replace($locale, '-', '_');
+            }
+
+            $country = $country ?? Locale::getDisplayRegion($locale, 'en');
+            $year = $year ?? date('Y');
+
             return Yasumi::create($country, $year, $locale);
+        },
+        'holidays' => function (
+            ?string $country = null,
+            ?int $year = null,
+            ?string $locale = null
+        ) {
+            $yasumi = $this->yasumi($country, $year, $locale);
+
+            return new Holidays($yasumi);
         }
     ],
     'collections' => [
-        'holidays' => function ($site): Pages {
-            $country = option('hashandsalt.yasumi.country', 'UnitedKingdom');
-            $year = intval(option('hashandsalt.yasumi.year', date('Y')));
-            $locale = option('hashandsalt.yasumi.locale', 'en_GB');
+        'holidays' => function ($site): Holidays {
+            $country = option('hashandsalt.yasumi.country');
+            $year = intval(option('hashandsalt.yasumi.year'));
+            $locale = option('hashandsalt.yasumi.locale');
+            $yasumi = $this->yasumi($country, $year, $locale);
 
-            foreach ($site->holidays($country, $year, $locale) as $holiday) {
-                $date = new DateTime($holiday);
-
-                $pages[] = [
-                    'slug' => $holiday->shortName,
-                    'num' => $date->format('Ymd'),
-                    'template' => 'yasumi',
-                    'content' => [
-                        'title' => $holiday->getName(),
-                        'date' => $date->format('Y-m-d'),
-                        'type' => $holiday->getType()
-                    ]
-                ];
-            }
-
-            return Pages::factory($pages);
+            return new Holidays($yasumi);
         }
     ]
 ]);

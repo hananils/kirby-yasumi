@@ -7,11 +7,20 @@
         {
             "name": "James Steel",
             "email": "hello@hashandsalt.com"
+        },
+        {
+            "name": "hana+nils · Büro für Gestaltung",
+            "email": "buero@hananils.de"
         }
     ],
     "require": {
         "getkirby/composer-installer": "^1.1",
         "azuyalabs/yasumi": "^2.11"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hashsandsalt\\Yasumi\\": "lib"
+        }
     },
     "config": {
         "optimize-autoloader": true,
